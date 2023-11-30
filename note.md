@@ -59,6 +59,7 @@
         3. Table lessions => Quản lý bài giảng 
             - id => int 
             - name => varchar(255)
+            - slug => varchar(255)
             - video_id => int 
             - document_id => int 
             - parent_id => 
@@ -74,3 +75,144 @@
             - courses_id => int 
             - created_at => timestamp
             - updated_at => timestamp
+        5. Table teacher => Giảng viên 
+            - id => int 
+            - name => varchar(100)
+            - slug => varchar(100)
+            - description => text 
+            - exp => float 
+            - images => varchar(255)
+            - created_at => timestamp
+            - updated_at => timestamp
+        6. Table videos =>  Quản lý video bài giảng
+            - id => int 
+            - name => varchar(255)
+            - url => varchar(255)
+            - created_at => timestamp
+            - updated_at => timestamp
+        7. Table documents => Quản lý  tài liệu bải giảng 
+            - id => int 
+            - name => varchar(255)
+            - url => varchar(255)
+            - size => float 
+            - created_at => timestamp
+            - updated_at => timestamp
+        8. Table categories_posts => Quản lý danh mục tin tức
+
+        -   id => int
+        -   name => varchar(200)
+        -   slug => varchar(200)
+        -   parent_id => int
+        -   created_at => timestamp
+        -   updated_at => timestamp
+
+        9. Table posts => Quản lý tin tức
+
+        -   id => int
+        -   title => varchar(255)
+        -   slug => varchar(255)
+        -   content => text
+        -   exceprt => text
+        -   thumbnail => varchar(255)
+        -   category_id => int
+        -   created_at => timestamp
+        -   updated_at => timestamp
+
+        10. Table students => Quản lý học viên
+
+        -   id => int
+        -   name => varchar(100)
+        -   email => varchar(100)
+        -   phone => varchar(20)
+        -   password => varchar(100)
+        -   address => varchar(200)
+        -   status => tinyint(1)
+        -   created_at => timestamp
+        -   updated_at => timestamp
+
+        11. Table students_courses => Trung gian học viên và khóa học
+
+        -   id => int
+        -   course_id => int
+        -   student_id => int
+        -   created_at => timestamp
+        -   updated_at => timestamp
+
+        12. Table orders => Quản lý đơn đăng ký của học viên
+
+        -   id => int
+        -   student_id => int
+        -   total => float
+        -   status => tinyint(1)
+        -   created_at => timestamp
+        -   updated_at => timestamp
+
+        13. Table orders_detail => Chi tiết đơn hàng
+
+        -   id => int
+        -   order_id => int
+        -   course_id => int
+        -   price => float
+        -   created_at => timestamp
+        -   updated_at => timestamp
+
+        14. Table orders_status => Quản lý trạng thái đơn hàng
+
+        -   id => int
+        -   name => varchar(200)
+        -   created_at => timestamp
+        -   updated_at => timestamp
+
+        15. Table users => Quản trị hệ thống
+
+        -   id => int
+        -   name => varchar(100)
+        -   email => varchar(100)
+        -   password => varchar(100)
+        -   group_id => int
+        -   created_at => timestamp
+        -   updated_at => timestamp
+
+        16. Table groups => Quản trị nhóm người dùng
+
+        -   id => int
+        -   name => varchar(100)
+        -   permissions => text
+        -   created_at => timestamp
+        -   updated_at => timestamp
+
+        17. Table modules => Danh sách các module trong trang quản trị
+
+        -   id => int
+        -   name => varchar(100)
+        -   title => varchar(200)
+        -   role => text
+
+        18. Table options => Quản lý các thiết lập
+
+        -   id => int
+        -   name => varchar(100)
+        -   value => text
+## Cài đặt Project và kết nối với Github
+
+### Cài đặt Laravel
+
+composer create-project laravel/laravel .
+
+### Kết nối với Github
+
+-   Đăng ký tài khoản Github (Nếu có rồi hãy đăng nhập)
+
+-   Tạo Repository
+
+-   Kết nối với folder project trên máy tính
+
+-   Push code lên Github
+
+### Quy trình updat code lên github
+
+-   git add .
+-   git commit -m "Noi dung update"
+-   git push
+
+## Cài đặt Laravel Module và Repository
