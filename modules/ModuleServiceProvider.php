@@ -4,17 +4,17 @@ namespace Modules;
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
-use Modules\User\src\Commands\TestCommand;
-use Modules\User\src\Http\Middlewares\DemoMiddleware;
+
+
 use Modules\User\src\Repositories\UserRepository;
 
 class ModuleServiceProvider extends ServiceProvider
 {
     private $middlewares = [
-        'demo' => DemoMiddleware::class,
+
     ];
     private $commands=[
-        TestCommand::class,
+
     ];
     public function boot()
     {
@@ -61,9 +61,9 @@ class ModuleServiceProvider extends ServiceProvider
         $modulePath = __DIR__ . "/{$module}";
         // echo $modulePath.'<br/>';
         //Khai báo routes
-        if (File::exists($modulePath . '/routes/route.php')) {
+        if (File::exists($modulePath . '/routes/web.php')) {
 
-            $this->loadRoutesFrom($modulePath . '/routes/route.php');
+            $this->loadRoutesFrom($modulePath . '/routes/web.php');
         }
 
         //Khai báo migrations
