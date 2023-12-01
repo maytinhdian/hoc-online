@@ -170,7 +170,7 @@ class Module extends Command
                 }
             }
 
-            $this->info('Module created successfully!');
+            $this->info('Module created successfully!!');
         }
     }
 }
