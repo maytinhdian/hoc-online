@@ -215,4 +215,17 @@ composer create-project laravel/laravel .
 -   git commit -m "Noi dung update"
 -   git push
 
-## Cài đặt Laravel Module và Repository
+## Cài đặt Laravel Module
+
+## Cài đặt Repository cho Laravel Module
+
+## Viết Artisan Console cho Laravel Module
+    'php artisan make:module ten_module'
+## Tích hợp Layout Admin 
+
+## Xây dựng Module quản lý Users 
+
+## Tạo Migrations - Seeder - Chuẩn bị giao diện 
+    'php artisan make:seeder UserSeeder'
+
+    'php artisan db:seed --class=Modules\User\seeders\UserSeeder'
