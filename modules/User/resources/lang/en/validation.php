@@ -6,4 +6,10 @@ return [
     'min' => ':attribute phải từ :min kí tự',
     'integer' => ':attribute phải là số',
     'choose'=> ':attribute bắt buộc phải chọn',
+    'attributes'=>[
+        'name'=>'Tên',
+        'email'=>'Email',
+        'password'=>'Mật khẩu',
+        'group_id'=>'Nhóm',
+    ],
 ];
