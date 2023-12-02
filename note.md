@@ -229,3 +229,11 @@ composer create-project laravel/laravel .
     'php artisan make:seeder UserSeeder'
 
     'php artisan db:seed --class=Modules\User\seeders\UserSeeder'
+
+## Tạo Repository và các phương thức cần thiết 
+    - Hiển thị danh sách User ( có phân trang )
+    - Thêm User 
+    - Sửa User 
+    - Xóa User 
+    - Lấy thông tin 1 User
+## Viết chức năng thêm User 

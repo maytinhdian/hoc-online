@@ -16,8 +16,11 @@ class UserController extends Controller
     {
         $pageTitle = 'Quản lý người dùng';
 
-        $check = $this->userRepository->checkPassword('1233456', 1);
-      
+        // $check = $this->userRepository->checkPassword('123456', 2);
+        // dd($check);
+
+        $users = $this->userRepository->find(2);
+        // dd($users);
         return view('user::lists', compact('pageTitle'));
     }
     public function create()
@@ -31,6 +34,12 @@ class UserController extends Controller
     }
     public function store(UserRequest $request)
     {
-
+        $this->userRepository->create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'group_id' => $request->group_id,
+            'password' => bcrypt($request->password),
+        ]);
+        return redirect()->route('admin.users.index')->with('msg', __('user::messages.success'));
     }
 }

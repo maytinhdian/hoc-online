@@ -2,6 +2,11 @@
 @section('title', 'Quản lý người dùng')
 @section('content')
 <p><a href="{{route('admin.users.create')}}" class="btn btn-primary">Thêm mới</a></p>
+@if (session('msg'))
+    <div class="alert alert-success">
+        {{session('msg')}}
+    </div>
+@endif
     <table id="datatablesSimple">
         <thead>
             <tr>

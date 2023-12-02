@@ -23,7 +23,7 @@ class UserRequest extends FormRequest
     {
         return [
             'name'=>'required|max:255,',
-            'email'=>'required|email|unique:user,email',
+            'email'=>'required|email|unique:users,email',
             'password'=>'required|min:6',
             'group_id'=>['required','integer',function($attribute,$value,$fail){
                 if ($value==0) {
