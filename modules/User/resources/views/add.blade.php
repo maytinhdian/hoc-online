@@ -32,7 +32,7 @@
             <div class="col-12">
 
                 <button type="submit" class="btn btn-primary">Lưu lại</button>
-                <a href="#" class="btn btn-danger">Hủy</a>
+                <a href="{{route('admin.users.index')}}" class="btn btn-danger">Hủy</a>
             </div>
         </div>
 
