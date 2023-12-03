@@ -21,19 +21,20 @@ class UserController extends Controller
         // $check = $this->userRepository->checkPassword('123456', 2);
         // dd($check);
 
-        $users = $this->userRepository->find(2);
+        // $users = $this->userRepository->find(2);
         // dd($users);
         return view('user::lists', compact('pageTitle'));
     }
-    public function data(){
-        $users=$this->userRepository->getAllUsers();
+    public function data()
+    {
+        $users = $this->userRepository->getAllUsers();
 
         return DataTables::of($users)
-        ->addColumn('edit',function($user){return '<a href="#" class="btn btn-warning">Sửa</a>';})
-        ->addColumn('delete',function($user){return '<a href="#" class="btn btn-danger">Xóa</a>'; })
-        ->editColumn('created_at',function($user){return Carbon::parse($user->created_at)->format('d/m/Y H:i:s'); })
-        ->rawColumns(['edit','delete'])
-        ->toJson();
+            ->addColumn('edit', function ($user) {return '<a href="' . route('admin.users.edit', $user->id) . '" class="btn btn-warning">Sửa</a>';})
+            ->addColumn('delete', function ($user) {return '<a href="#" class="btn btn-danger">Xóa</a>';})
+            ->editColumn('created_at', function ($user) {return Carbon::parse($user->created_at)->format('d/m/Y H:i:s');})
+            ->rawColumns(['edit', 'delete'])
+            ->toJson();
 
     }
     public function create()
@@ -53,6 +54,25 @@ class UserController extends Controller
             'group_id' => $request->group_id,
             'password' => bcrypt($request->password),
         ]);
-        return redirect()->route('admin.users.index')->with('msg', __('user::messages.success'));
+        return redirect()->route('admin.users.index')->with('msg', __('user::messages.create.success'));
+    }
+    public function edit($id)
+    {
+        $pageTitle = 'Cập nhật thông tin người dùng';
+        $user = $this->userRepository->find($id);
+        if (!$user) {
+            abort(404);
+        }
+        return view('user::edit', compact('user', 'pageTitle'));
+    }
+    public function update(UserRequest $request, $id)
+    {
+        $data = $request->except('_token', 'password');
+        if ($request->password) {
+            $data['password'] = bcrypt($request->password);
+        }
+        $this ->userRepository->update($id,$data);
+        return back()->with('msg', __('user::messages.update.success'));
+
     }
 }

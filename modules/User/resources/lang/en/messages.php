@@ -1,6 +1,8 @@
 <?php
 
 return[
-    'success'=>'Thêm thành công',
-    'fail'=> 'Thêm thất bại',
+    'create.success'=>'Thêm thành công',
+    'create.fail'=> 'Thêm thất bại',
+    'update.success'=>'Cập nhật thành công',
+    'update.fail'=>'Cập nhật không thành công',
 ];
