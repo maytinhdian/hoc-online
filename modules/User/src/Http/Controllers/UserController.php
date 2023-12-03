@@ -2,8 +2,10 @@
 namespace Modules\User\src\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Modules\User\src\Http\Requests\UserRequest;
 use Modules\User\src\Repositories\UserRepository;
+use Yajra\DataTables\Facades\DataTables;
 
 class UserController extends Controller
 {
@@ -26,22 +28,13 @@ class UserController extends Controller
     public function data(){
         $users=$this->userRepository->getAllUsers();
 
-        $data=[];
-        foreach ($users as $user) {
-           array_push($data,[
-            ...$user->toArray(),
-            'edit'=>'<a href="#" class="btn btn-warning">Sửa</a>',
-            'delete'=>'<a href="#" class="btn btn-danger">Xóa</a>'
-           ]);
+        return DataTables::of($users)
+        ->addColumn('edit',function($user){return '<a href="#" class="btn btn-warning">Sửa</a>';})
+        ->addColumn('delete',function($user){return '<a href="#" class="btn btn-danger">Xóa</a>'; })
+        ->editColumn('created_at',function($user){return Carbon::parse($user->created_at)->format('d/m/Y H:i:s'); })
+        ->rawColumns(['edit','delete'])
+        ->toJson();
 
-        }
-        // dd($data);
-        return response()->json([
-            'draw'=> 1,
-            'recordsTotal'=> count($users),
-            'recordsFiltered'=> count($users),
-            'data'=>$data,
-        ]);
     }
     public function create()
     {
