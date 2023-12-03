@@ -23,6 +23,26 @@ class UserController extends Controller
         // dd($users);
         return view('user::lists', compact('pageTitle'));
     }
+    public function data(){
+        $users=$this->userRepository->getAllUsers();
+
+        $data=[];
+        foreach ($users as $user) {
+           array_push($data,[
+            ...$user->toArray(),
+            'edit'=>'<a href="#" class="btn btn-warning">Sửa</a>',
+            'delete'=>'<a href="#" class="btn btn-danger">Xóa</a>'
+           ]);
+
+        }
+        // dd($data);
+        return response()->json([
+            'draw'=> 1,
+            'recordsTotal'=> count($users),
+            'recordsFiltered'=> count($users),
+            'data'=>$data,
+        ]);
+    }
     public function create()
     {
         $pageTitle = 'Thêm người dùng';
