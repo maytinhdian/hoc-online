@@ -260,4 +260,10 @@ composer create-project laravel/laravel .
         3. php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"
 ## Viết chức năng xóa User 
 
-    
+## Viết chức năng quản lý danh mục
+    - Migration 
+        php artisan make:migration create_categories_table --path=/modules/Categories/migrations
+
+        php artisan migrate
+    - Tạo model category 
+        php artisan make:model Category ( Phàn tạo đúng vị trí chưa được)
