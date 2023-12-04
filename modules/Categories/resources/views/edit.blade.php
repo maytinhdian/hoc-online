@@ -13,7 +13,7 @@
                 <div class="mb-3">
                     <label for="">Tên</label>
                     <input type="text" name="name" id=""
-                        class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" placeholder="Tên..."
+                        class="form-control title {{ $errors->has('name') ? 'is-invalid' : '' }}" placeholder="Tên..."
                         value="{{ old('name') ?? $category->name }}">
                     @error('name')
                         <div class="invalid-feedback">
@@ -26,7 +26,7 @@
                 <div class="mb-3">
                     <label for="">Slug</label>
                     <input type="text" name="slug" id=""
-                        class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" placeholder="Slug..."
+                        class="form-control slug {{ $errors->has('slug') ? 'is-invalid' : '' }}" placeholder="Slug..."
                         value="{{ old('slug') ?? $category->slug }} ">
                     @error('slug')
                         <div class="invalid-feedback">
