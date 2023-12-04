@@ -237,24 +237,27 @@ composer create-project laravel/laravel .
     - Xóa User 
     - Lấy thông tin 1 User
 ## Viết chức năng thêm User 
-- Sử dụng package Laravel DataTables hiển thị danh sách user
-    1. Install package Laravel DataTables
-        + composer require yajra/laravel-datatables-oracle:"^10.0"
-        + Laravel 9: 
-            composer require yajra/laravel-datatables:^9.0
-        + Laravel 10: 
-            composer require yajra/laravel-datatables:^10.0
-    2. Configuration: 
-        config/app.php 
-            'providers' => [
-                // ...
-                Yajra\DataTables\DataTablesServiceProvider::class,
-            ],
-    3. php artisan vendor:publish --tag=datatables
-- Sử dụng package Debug Bar Laravel để kiểm tra câu lệnh SQL 
-    1. Install package  https://github.com/barryvdh/laravel-debugbar
-        + composer require barryvdh/laravel-debugbar --dev
-    2. Configuration:  
-        + If you don't use auto-discovery, add the ServiceProvider to the providers array in config/app.php
-            Barryvdh\Debugbar\ServiceProvider::class,
-    3. php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"
+    - Sử dụng package Laravel DataTables hiển thị danh sách user
+        1. Install package Laravel DataTables
+            + composer require yajra/laravel-datatables-oracle:"^10.0"
+            + Laravel 9: 
+                composer require yajra/laravel-datatables:^9.0
+            + Laravel 10: 
+                composer require yajra/laravel-datatables:^10.0
+        2. Configuration: 
+            config/app.php 
+                'providers' => [
+                    // ...
+                    Yajra\DataTables\DataTablesServiceProvider::class,
+                ],
+        3. php artisan vendor:publish --tag=datatables
+    - Sử dụng package Debug Bar Laravel để kiểm tra câu lệnh SQL 
+        1. Install package  https://github.com/barryvdh/laravel-debugbar
+            + composer require barryvdh/laravel-debugbar --dev
+        2. Configuration:  
+            + If you don't use auto-discovery, add the ServiceProvider to the providers array in config/app.php
+                Barryvdh\Debugbar\ServiceProvider::class,
+        3. php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"
+## Viết chức năng xóa User 
+
+    

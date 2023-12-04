@@ -70,5 +70,6 @@
             </div>
         </div>
         @csrf
+        @method('PUT')
     </form>
 @endsection
