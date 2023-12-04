@@ -37,7 +37,10 @@ class CategoriesController extends Controller
     public function create()
     {
         $pageTitle = 'Thêm danh mục';
-        return view('categories::add', compact('pageTitle'));
+
+        $categories = $this->categoryRespository->getAllCategories();
+
+        return view('categories::add', compact('pageTitle','categories'));
     }
     public function store(CategoryRequest $request)
     {
@@ -57,7 +60,9 @@ class CategoriesController extends Controller
         if (!$category) {
             abort(404);
         }
-        return view('categories::edit', compact('category', 'pageTitle'));
+        $categories = $this->categoryRespository->getAllCategories();
+
+        return view('categories::edit', compact('category', 'pageTitle','categories'));
     }
     public function update(CategoryRequest $request,$id)
     {

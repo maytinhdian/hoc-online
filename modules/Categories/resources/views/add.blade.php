@@ -31,7 +31,7 @@
                     <label for="">Cha</label>
                     <select name="parent_id" id="" class="form-select {{ $errors->has('parent_id') ? 'is-invalid' : '' }}" value="{{old('parent_id')}}">
                         <option value="0">Không</option>
-                        <option value="1">Administrator</option>
+                        {{getCategories($categories,old('parent_id'))}}
                     </select>
                     @error('parent_id')
                         <div class="invalid-feedback">
