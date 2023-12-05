@@ -324,4 +324,10 @@ composer create-project laravel/laravel .
                 'name'=>'C'
             ]
         ],
+## Viết chức năng quản lý Courses Khóa Học 
+    - Migration
+        php artisan make:migration create_courses_table --path=/modules/Courses/migrations
 
+        php artisan migrate
+    - Tạo model category
+        php artisan make:model Category ( Phàn tạo đúng vị trí chưa được)
