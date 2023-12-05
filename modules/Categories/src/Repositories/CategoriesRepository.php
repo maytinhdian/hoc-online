@@ -17,9 +17,7 @@ class CategoriesRepository extends BaseRepository implements CategoriesRepositor
         return $this->model->with('subCategories')->where('parent_id',0)->select('id','name','slug','parent_id','created_at')->latest();
     }
     public function getAllCategories(){
-        return $this->getCategories()->get();
+        return $this->getAll();
     }
-    public function getTreeCategories(){
-        return $this->model->with('subCategories')->where('parent_id',0)->select('id','name','slug','parent_id','created_at')->latest();
-    }
+
 }

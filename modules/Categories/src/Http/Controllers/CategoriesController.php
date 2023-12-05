@@ -9,34 +9,28 @@ use Yajra\DataTables\Facades\DataTables;
 
 class CategoriesController extends Controller
 {
-    protected $categoryRespository;
+    protected $categoryRepository;
     /**
      * Class constructor.
      */
-    public function __construct(CategoriesRepository $categoryRespository)
+    public function __construct(CategoriesRepository $categoryRepository)
     {
-        $this->categoryRespository = $categoryRespository;
+        $this->categoryRepository = $categoryRepository;
     }
     public function index()
     {
         $pageTitle = 'Quản lý danh mục';
 
-        // $categories = $this->categoryRespository->getTreeCategories()->toArray();
+        // $categories = $this->categoryRepository->getTreeCategories()->toArray();
         // dd($categories);
 
         return view('categories::lists', compact('pageTitle'));
     }
     public function data()
     {
-        $categories = $this->categoryRespository->getCategories();
+        $categories = $this->categoryRepository->getCategories();
 
-        $categories = DataTables::of($categories)
-            // ->addColumn('link', function ($category) {return '<a href="#" class="btn btn-primary">Xem</a>';})
-            // ->addColumn('edit', function ($category) {return '<a href="' . route('admin.categories.edit', $category->id) . '" class="btn btn-warning">Sửa</a>';})
-            // ->addColumn('delete', function ($category) {return '<a href="' . route('admin.categories.delete', $category->id) . '" class="btn btn-danger delete-action">Xóa</a>';})
-            // ->editColumn('created_at', function ($category) {return Carbon::parse($category->created_at)->format('d/m/Y H:i:s');})
-            // ->rawColumns(['edit', 'delete', 'link'])
-            ->toArray();
+        $categories = DataTables::of($categories)->toArray();
 
         $categories['data'] = $this->getCategoriesTable($categories['data']);
         return $categories;
@@ -51,7 +45,7 @@ class CategoriesController extends Controller
                 $row['name'] = $char . $row['name'];
                 $row['edit'] = '<a href="' . route('admin.categories.edit', $category['id']) . '" class="btn btn-warning">Sửa</a>';
                 $row['delete'] = '<a href="' . route('admin.categories.delete', $category['id']) . '" class="btn btn-danger delete-action">Xóa</a>';
-                $row['link']='<a href="_blank" class="btn btn-primary">Xem</a>';
+                $row['link']='<a href="/danh-muc/' . $category['slug'] . '" class="btn btn-primary">Xem</a>';
                 $row['created_at']=Carbon::parse($category['created_at'])->format('d/m/Y H:i:s');
                 unset($row['sub_categories']);
                 unset($row['updated_at']);
@@ -68,11 +62,12 @@ class CategoriesController extends Controller
     public function create()
     {
         $pageTitle = 'Thêm danh mục';
+        $categories = $this->categoryRepository->getAllCategories();
         return view('categories::add', compact('pageTitle', 'categories'));
     }
     public function store(CategoryRequest $request)
     {
-        $this->categoryRespository->create([
+        $this->categoryRepository->create([
             'name' => $request->name,
             'slug' => $request->slug,
             'parent_id' => $request->parent_id,
@@ -84,11 +79,11 @@ class CategoriesController extends Controller
     {
         $pageTitle = 'Cập nhật danh mục';
 
-        $category = $this->categoryRespository->find($id);
+        $category = $this->categoryRepository->find($id);
         if (!$category) {
             abort(404);
         }
-        $categories = $this->categoryRespository->getAllCategories();
+        $categories = $this->categoryRepository->getAllCategories();
 
         return view('categories::edit', compact('category', 'pageTitle', 'categories'));
     }
@@ -96,12 +91,12 @@ class CategoriesController extends Controller
     {
         $data = $request->except('_token');
 
-        $this->categoryRespository->update($id, $data);
+        $this->categoryRepository->update($id, $data);
         return back()->with('msg', __('categories::messages.update.success'));
     }
     public function delete($id)
     {
-        $this->categoryRespository->delete($id);
+        $this->categoryRepository->delete($id);
         return back()->with('msg', __('categories::messages.delete.success'));
     }
 }
