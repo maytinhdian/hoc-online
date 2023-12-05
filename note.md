@@ -1,100 +1,100 @@
-# DỰ ÁN WEBSITE HỌC TRỰC TUYẾN 
+# DỰ ÁN WEBSITE HỌC TRỰC TUYẾN
 
-    ## Dành cho người dùng  
-        - Hiển thị danh sách khóa học 
-        - Hiển thị thông tin chi tiết khóa học 
-        - Xem video bài giảng 
-        - Download tài liệu bài giảng 
-        - Học thử bài giảng 
-        - Đăng ký / đăng nhập 
-        - Trang tài khoản: Thông tin cá nhân , khóa học của tôi ... 
-        - Mua khóa học 
-        - Giỏ hàng 
+    ## Dành cho người dùng
+        - Hiển thị danh sách khóa học
+        - Hiển thị thông tin chi tiết khóa học
+        - Xem video bài giảng
+        - Download tài liệu bài giảng
+        - Học thử bài giảng
+        - Đăng ký / đăng nhập
+        - Trang tài khoản: Thông tin cá nhân , khóa học của tôi ...
+        - Mua khóa học
+        - Giỏ hàng
         - Hiển thị danh sách tin tức
-        - Hiển thị chi tiết tin tức 
+        - Hiển thị chi tiết tin tức
 
-    ## Dành cho quản trị 
-        - Quản lý danh mục  
-        - Quản lý học viên 
+    ## Dành cho quản trị
+        - Quản lý danh mục
+        - Quản lý học viên
         - Quản lý khóa học
-        - Quản lý giảng viên 
-        - Quản lý bài giảng 
-        - Quản lý danh mục tin tức 
-        - Quản lý tin tức 
+        - Quản lý giảng viên
+        - Quản lý bài giảng
+        - Quản lý danh mục tin tức
+        - Quản lý tin tức
         - Quản lý người dùng (Quản lý hệ thống)
-        - Kích hoạt khóa học cho học viên 
+        - Kích hoạt khóa học cho học viên
         - Phân quyền quản trị hệ thống
         - Báo cáo thống kê,....
-        - Quản lý file tài liệu 
-        - Quản lý video 
+        - Quản lý file tài liệu
+        - Quản lý video
 
-    ## API 
-        - Xây dựng API hoàn chỉnh 
+    ## API
+        - Xây dựng API hoàn chỉnh
 
-    ## Phân tích database 
+    ## Phân tích database
 
-        1. Table categories => Quản lý danh mục 
+        1. Table categories => Quản lý danh mục
             - id =>int
             - name => varchar(200)
             - slug => varchar(200)
-            - parent_id =>int 
+            - parent_id =>int
             - created_at => timestamp
             - updated_at => timestamp
-        2. Table courses => Quản lý khóa học 
-            - id => int 
+        2. Table courses => Quản lý khóa học
+            - id => int
             - name =>varchar(255)
             - slug => varchar(255)
-            - detail => text 
-            - teacher_id => int 
+            - detail => text
+            - teacher_id => int
             - thumbnail => varchar(255)
-            - price => float 
-            - sale_price => float 
+            - price => float
+            - sale_price => float
             - code => varchar(100)
-            - durations => float 
-            - is_document => tinyint 
-            - supports => text 
-            - status => tinyint 
+            - durations => float
+            - is_document => tinyint
+            - supports => text
+            - status => tinyint
             - created_at => timestamp
             - updated_at => timestamp
-        3. Table lessions => Quản lý bài giảng 
-            - id => int 
+        3. Table lessions => Quản lý bài giảng
+            - id => int
             - name => varchar(255)
             - slug => varchar(255)
-            - video_id => int 
-            - document_id => int 
-            - parent_id => 
-            - is_trial => tinyint 
-            - views => int 
-            - position => int 
-            - duration => float 
+            - video_id => int
+            - document_id => int
+            - parent_id =>
+            - is_trial => tinyint
+            - views => int
+            - position => int
+            - duration => float
             - created_at => timestamp
             - updated_at => timestamp
-        4. Table categories_courses => Trung gian liên kết giữa danh mục và khóa học  
-            - id => int 
-            - category_id => int 
-            - courses_id => int 
+        4. Table categories_courses => Trung gian liên kết giữa danh mục và khóa học
+            - id => int
+            - category_id => int
+            - courses_id => int
             - created_at => timestamp
             - updated_at => timestamp
-        5. Table teacher => Giảng viên 
-            - id => int 
+        5. Table teacher => Giảng viên
+            - id => int
             - name => varchar(100)
             - slug => varchar(100)
-            - description => text 
-            - exp => float 
+            - description => text
+            - exp => float
             - images => varchar(255)
             - created_at => timestamp
             - updated_at => timestamp
         6. Table videos =>  Quản lý video bài giảng
-            - id => int 
+            - id => int
             - name => varchar(255)
             - url => varchar(255)
             - created_at => timestamp
             - updated_at => timestamp
-        7. Table documents => Quản lý  tài liệu bải giảng 
-            - id => int 
+        7. Table documents => Quản lý  tài liệu bải giảng
+            - id => int
             - name => varchar(255)
             - url => varchar(255)
-            - size => float 
+            - size => float
             - created_at => timestamp
             - updated_at => timestamp
         8. Table categories_posts => Quản lý danh mục tin tức
@@ -193,6 +193,7 @@
         -   id => int
         -   name => varchar(100)
         -   value => text
+
 ## Cài đặt Project và kết nối với Github
 
 ### Cài đặt Laravel
@@ -220,52 +221,60 @@ composer create-project laravel/laravel .
 ## Cài đặt Repository cho Laravel Module
 
 ## Viết Artisan Console cho Laravel Module
+
     'php artisan make:module ten_module'
-## Tích hợp Layout Admin 
 
-## Xây dựng Module quản lý Users 
+## Tích hợp Layout Admin
 
-## Tạo Migrations - Seeder - Chuẩn bị giao diện 
+## Xây dựng Module quản lý Users
+
+## Tạo Migrations - Seeder - Chuẩn bị giao diện
+
     'php artisan make:seeder UserSeeder'
 
     'php artisan db:seed --class=Modules\User\seeders\UserSeeder'
 
-## Tạo Repository và các phương thức cần thiết 
+## Tạo Repository và các phương thức cần thiết
+
     - Hiển thị danh sách User ( có phân trang )
-    - Thêm User 
-    - Sửa User 
-    - Xóa User 
+    - Thêm User
+    - Sửa User
+    - Xóa User
     - Lấy thông tin 1 User
-## Viết chức năng thêm User 
+
+## Viết chức năng thêm User
+
     - Sử dụng package Laravel DataTables hiển thị danh sách user
         1. Install package Laravel DataTables
             + composer require yajra/laravel-datatables-oracle:"^10.0"
-            + Laravel 9: 
+            + Laravel 9:
                 composer require yajra/laravel-datatables:^9.0
-            + Laravel 10: 
+            + Laravel 10:
                 composer require yajra/laravel-datatables:^10.0
-        2. Configuration: 
-            config/app.php 
+        2. Configuration:
+            config/app.php
                 'providers' => [
                     // ...
                     Yajra\DataTables\DataTablesServiceProvider::class,
                 ],
         3. php artisan vendor:publish --tag=datatables
-    - Sử dụng package Debug Bar Laravel để kiểm tra câu lệnh SQL 
+    - Sử dụng package Debug Bar Laravel để kiểm tra câu lệnh SQL
         1. Install package  https://github.com/barryvdh/laravel-debugbar
             + composer require barryvdh/laravel-debugbar --dev
-        2. Configuration:  
+        2. Configuration:
             + If you don't use auto-discovery, add the ServiceProvider to the providers array in config/app.php
                 Barryvdh\Debugbar\ServiceProvider::class,
         3. php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"
-## Viết chức năng xóa User 
+
+## Viết chức năng xóa User
 
 ## Viết chức năng quản lý danh mục
-    - Migration 
+
+    - Migration
         php artisan make:migration create_categories_table --path=/modules/Categories/migrations
 
         php artisan migrate
-    - Tạo model category 
+    - Tạo model category
         php artisan make:model Category ( Phàn tạo đúng vị trí chưa được)
     - Hàm tạo slug javascript
 
@@ -302,4 +311,17 @@ composer create-project laravel/laravel .
         }
         ```
     - Tạo menu đa cấp
-        
+        [
+            'id'=>1,
+            'name'=>'A'
+        ],
+
+        [
+            'id'=>1,
+            'name'=>'A'
+            'sub' =>[
+                'id'=> 3,
+                'name'=>'C'
+            ]
+        ],
+

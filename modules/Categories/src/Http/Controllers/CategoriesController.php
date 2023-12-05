@@ -20,6 +20,10 @@ class CategoriesController extends Controller
     public function index()
     {
         $pageTitle = 'Quản lý danh mục';
+
+        $categories = $this->categoryRespository->getTreeCategories()->toArray();
+        dd($categories);
+
         return view('categories::lists', compact('pageTitle'));
     }
     public function data()
