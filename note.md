@@ -331,3 +331,15 @@ composer create-project laravel/laravel .
         php artisan migrate
     - Tạo model category
         php artisan make:model Category ( Phàn tạo đúng vị trí chưa được)
+    -Tích hợp ckeditor và laravel filemanager 
+        + Tích hợp CKeditor 
+
+        + Tích hợp Laravel File Manager
+            1. Command Install 
+                composer require unisharp/laravel-filemanager
+                php artisan vendor:publish --tag=lfm_config
+                php artisan vendor:publish --tag=lfm_public
+                php artisan storage:link
+            2. Edit APP_URL in .env
+                
+
