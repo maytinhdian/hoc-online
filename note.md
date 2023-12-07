@@ -341,5 +341,8 @@ composer create-project laravel/laravel .
                 php artisan vendor:publish --tag=lfm_public
                 php artisan storage:link
             2. Edit APP_URL in .env
-                
-
+## Viết module Authentication 
+    Artisan command 
+        composer require laravel/ui              
+        php artisan ui bootstrap --auth
+        npm install && npm run dev
