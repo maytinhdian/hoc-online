@@ -1,11 +1,12 @@
 <?php
 namespace Modules\Categories\src\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Carbon\Carbon;
+use App\Http\Controllers\Controller;
+use Yajra\DataTables\Facades\DataTables;
 use Modules\Categories\src\Http\Requests\CategoryRequest;
 use Modules\Categories\src\Repositories\CategoriesRepository;
-use Yajra\DataTables\Facades\DataTables;
+use Modules\Categories\src\Repositories\CategoriesRepositoryInterface;
 
 class CategoriesController extends Controller
 {
@@ -13,7 +14,7 @@ class CategoriesController extends Controller
     /**
      * Class constructor.
      */
-    public function __construct(CategoriesRepository $categoryRepository)
+    public function __construct(CategoriesRepositoryInterface $categoryRepository)
     {
         $this->categoryRepository = $categoryRepository;
     }

@@ -8,10 +8,11 @@ use App\Http\Controllers\Controller;
 use Yajra\DataTables\Facades\DataTables;
 use Modules\Courses\src\Http\Requests\CoursesRequest;
 use Modules\Courses\src\Repositories\CoursesRepository;
+use Modules\Courses\src\Repositories\CoursesRepositoryInterface;
 
 class CoursesController extends Controller{
     protected $coursesRepository;
-    public function __construct(CoursesRepository $coursesRepository)
+    public function __construct(CoursesRepositoryInterface $coursesRepository)
     {
         $this->coursesRepository = $coursesRepository;
     }

@@ -7,6 +7,7 @@ use Illuminate\Support\ServiceProvider;
 
 
 use Modules\User\src\Repositories\UserRepository;
+use Modules\User\src\Repositories\UserRepositoryInterface;
 
 class ModuleServiceProvider extends ServiceProvider
 {
@@ -44,7 +45,12 @@ class ModuleServiceProvider extends ServiceProvider
         $this->commands($this->commands);
 
         $this->app->singleton(
+            UserRepositoryInterface::class,
             UserRepository::class
+        );
+        $this->app->singleton(
+            CategoriesRepositoryInterface::class,
+            CategoriesRepository::class
         );
     }
 
