@@ -2,11 +2,12 @@
 
 namespace Modules\Courses\src\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Carbon\Carbon;
+use App\Http\Controllers\Controller;
+
+use Yajra\DataTables\Facades\DataTables;
 use Modules\Courses\src\Http\Requests\CoursesRequest;
 use Modules\Courses\src\Repositories\CoursesRepository;
-use Yajra\DataTables\Facades\DataTables;
 
 class CoursesController extends Controller{
     protected $coursesRepository;
