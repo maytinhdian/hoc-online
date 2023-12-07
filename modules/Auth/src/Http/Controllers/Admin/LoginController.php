@@ -28,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::ADMIN;
 
     /**
      * Create a new controller instance.
@@ -50,5 +50,9 @@ class LoginController extends Controller
         throw ValidationException::withMessages([
             $this->username() => [__('auth::messages.login.fail')],
         ]);
+    }
+    protected function loggedOut(Request $request)
+    {
+        return redirect($this->redirectTo);
     }
 }
