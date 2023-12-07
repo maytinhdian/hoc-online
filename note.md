@@ -342,7 +342,10 @@ composer create-project laravel/laravel .
                 php artisan storage:link
             2. Edit APP_URL in .env
 ## Viết module Authentication 
-    Artisan command 
+    - Artisan command 
         composer require laravel/ui              
         php artisan ui bootstrap --auth
         npm install && npm run dev
+    - Clear cache 
+        php artisan optimize:clear
+        Use 'composer dump-autoload' to clear the providers cache

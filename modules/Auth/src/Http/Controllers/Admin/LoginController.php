@@ -2,8 +2,10 @@
 
 namespace Modules\Auth\src\Http\Controllers\Admin;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -39,7 +41,14 @@ class LoginController extends Controller
     }
     public function showLoginForm()
     {
-        // return 'login ';
-        return view('auth::admin.login');
+        $pageTitle = 'Đăng nhập hệ thống';
+        return view('auth::admin.login', compact('pageTitle'));
+
+    }
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        throw ValidationException::withMessages([
+            $this->username() => [__('auth::messages.login.fail')],
+        ]);
     }
 }
